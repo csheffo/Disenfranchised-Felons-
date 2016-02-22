@@ -1,0 +1,152 @@
+<html>
+    <head></head>
+    <body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+<div id="columncontainer" style="min-width: 300px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+<div id="secondcontainer" style="min-width: 300px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+<script>
+$(function () {
+    $('#columncontainer').highcharts({
+        chart: {
+            type: 'column',
+            spacingBottom: 50,
+        },
+        title: {
+            text: 'A Disproportionate Number of African-Americans in Maryland Cannot Vote Because of Felony Convictions...'
+        },
+   			 credits: {
+            enabled: false
+        },
+       exporting: {
+	enabled: false
+	},
+        subtitle: {
+        	text: "By Naema Ahmed, Jordan Branch, Marina di Marzo and Catherine Sheffo <br> CAPITAL NEWS SERVICE <br>When compared with the adult population of Maryland as a whole, African-Americans were more than twice as likely to be unable to vote because of a felony conviction, according to 2010 data from the Sentencing Project. The Maryland Senate voted Tuesday to override Gov. Larry Hogan's veto of last year's legislation to expand voting rights for ex-felons."
+        },
+        xAxis: {
+            categories: ['General Population', 'African-Americans']
+        },
+        yAxis: {
+            min: 0,
+            	title: {
+                text: ''
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+       /**legend: {
+            align: 'right',
+            x: -330,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },**/
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: 'Disenfranchised felons per 1,000 people: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                /**dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        textShadow: '0 0 3px black'
+                    }
+                }**/
+            }
+        },
+        series: [{
+            name: 'Disenfranchised Felons per 1,000 People',
+            color:'#cc0000',
+            data: [13.7, 29.6]
+        }]
+    });
+});
+
+$(function () {
+  Highcharts.setOptions({
+    global: {
+      useUTC: false,
+    },
+    lang: {
+      decimalPoint: ',',
+      thousandsSep: ','
+    }
+  });
+$(function () {
+    $('#secondcontainer').highcharts({
+        chart: {
+            type: 'column',
+           
+        },
+        exporting: {
+        	enabled: false
+				},
+        credits: {
+        		enabled: true,
+          	text: 'Source: United States Census Bureau, The Sentencing Project' 
+        },
+        title: {
+            text: '...But Expanding Voting Rights for Felons Will Do Little to Close the African-American Voting Registration Gap',           
+            margin: 25,   
+          },
+        xAxis: {
+            categories: ['General Population including African-Americans', 'African-Americans']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Percent of Total'
+            }
+        },
+        tooltip: {
+            pointFormat: '<span style="color:{series.color}">					{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+            shared: true
+        },
+        plotOptions: {
+        	
+            column: {
+                stacking: 'percent',
+                dataLabels: {
+		    enabled: true,
+		    format: '{percentage:.0f}%',
+		    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'black',
+                }
+            }
+        },
+        series: [
+        {
+        	name: 'Disenfranchised felons',
+          data: [63588, 41562],
+          color:'#cc0000',
+        },
+        {
+          name: 'Registered to Vote',
+          data: [3493520, 621403],
+          color: '#ffdc5e',
+        },
+        {
+         	name: 'Not Registered to Vote',
+          data: [2419299 , 1147886],
+          color:'#A9E5BB',
+        }]
+    });
+});
+});
+</script>
+</body>
+</html>
